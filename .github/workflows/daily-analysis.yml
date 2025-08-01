@@ -1,0 +1,15 @@
+name: Daily Analysis Trigger
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Runs at 6:00 AM UTC daily
+
+jobs:
+  trigger-daily-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send POST request to daily-analysis endpoint
+        run: |
+          curl -X POST https://yang-frost-26022555.figma.site/make-server-767af894/cron/daily-analysis \
+            -H "X-Cron-Key: lightweight-daily-analysis-2024"
